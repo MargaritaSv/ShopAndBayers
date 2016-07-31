@@ -27,4 +27,8 @@ public class ProductByCount extends Product {
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        return 0 -this.quantity;
+    }
 }

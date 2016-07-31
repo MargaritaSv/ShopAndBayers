@@ -27,7 +27,8 @@ public class Main {
             IBuyer stefan = IBuyer.createBayer("Stephan", billa, 3000.0, 10);
             IBuyer katq = IBuyer.createBayer("Katq", billa, 2500, 4);
 
-            magi.addProductByKg(chicken,300);
+            magi.addProductByKg(chicken, 300);
+            magi.addProductByCount(dab, 8);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

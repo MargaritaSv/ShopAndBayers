@@ -3,7 +3,7 @@ package shopBayers;
 /**
  * Created by Magi on 31.7.2016 г..
  */
-public abstract class Product {
+public abstract class Product  implements Comparable{
     private String name;
     private double price;
 

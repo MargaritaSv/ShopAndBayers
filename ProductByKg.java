@@ -23,4 +23,9 @@ public class ProductByKg extends Product {
         return super.toString() + " with " + this.quantity + "kg";
     }
 
+    @Override
+    public int compareTo(Object o) {
+//return o -Integer.valueOf((int) this.quantity);
+        return 0;
+    }
 }

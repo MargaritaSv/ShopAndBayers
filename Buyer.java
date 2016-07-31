@@ -1,12 +1,14 @@
 package shopBayers;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Created by Magi on 31.7.2016 г..
  */
-class Buyer implements IBuyer {
+class Buyer implements IBuyer, Comparable<Product> {
     private String name;
     private Shop shop;
     private double money;
@@ -48,9 +50,7 @@ class Buyer implements IBuyer {
             throw new IllegalArgumentException("The " + product + "doesn't contain in the shop.");
         }
         //TODO:if product amount is biggest than (ostanalata) in shop
-
         if (!cart.containsKey(product)) {
-
             cart.put(product, amount);
         } else {
             double oldPrice = cart.get(product);
@@ -62,6 +62,17 @@ class Buyer implements IBuyer {
 
     @Override
     public void addProductByCount(ProductByCount product, int amount) {
+        if (!shop.getProducts().contains(product)) {
+            throw new IllegalArgumentException("The " + product + "doesn't contain in the shop.");
+        }
+        //TODO:if product amount is biggest than (ostanalata) in shop
+        if (!cart.containsKey(product)) {
+            cart.put(product, (double) amount);
+        } else {
+            double oldPrice = cart.get(product);
+            //if buyer just added more quantity from this product
+            cart.put(product, amount + oldPrice);
+        }
 
     }
 
@@ -69,6 +80,7 @@ class Buyer implements IBuyer {
     public void removeProductByKg(ProductByKg product, double amount) {
 //TODO: all product
         //TODO: part of product
+
     }
 
     @Override
@@ -79,5 +91,11 @@ class Buyer implements IBuyer {
     @Override
     public void payProducts() {
 
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        o.getName().compareTo(o.getName());
+        return 1;
     }
 }
