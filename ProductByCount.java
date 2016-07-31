@@ -13,6 +13,7 @@ public class ProductByCount extends Product {
         this.setQuantity(quantity);
     }
 
+
     protected void setQuantity(int quantity) {
         if (quantity <= 0.0) {
             throw new IllegalArgumentException("The quantity for " + super.getName() + " must be more than zero.");
@@ -24,4 +25,6 @@ public class ProductByCount extends Product {
     public String toString() {
         return super.toString() + " the shop has " + this.quantity;
     }
+
+
 }

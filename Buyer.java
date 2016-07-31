@@ -1,5 +1,8 @@
 package shopBayers;
 
+import java.util.ArrayList;
+import java.util.TreeMap;
+
 /**
  * Created by Magi on 31.7.2016 г..
  */
@@ -8,12 +11,14 @@ class Buyer implements IBuyer {
     private Shop shop;
     private double money;
     private int maxProducts;
+    private TreeMap<Product, Double> cart;
 
     Buyer(String name, Shop shop, double money, int maxProducts) {
         this.setName(name);
         this.shop = shop;
         this.setMoney(money);
         this.setMaxProducts(maxProducts);
+        this.cart = new TreeMap<>();
     }
 
     private void setName(String name) {
@@ -39,6 +44,19 @@ class Buyer implements IBuyer {
 
     @Override
     public void addProductByKg(ProductByKg product, double amount) {
+        if (!shop.getProducts().contains(product)) {
+            throw new IllegalArgumentException("The " + product + "doesn't contain in the shop.");
+        }
+        //TODO:if product amount is biggest than (ostanalata) in shop
+
+        if (!cart.containsKey(product)) {
+
+            cart.put(product, amount);
+        } else {
+            double oldPrice = cart.get(product);
+            //if buyer just added more quantity from this product
+            cart.put(product, amount + oldPrice);
+        }
 
     }
 
@@ -49,7 +67,8 @@ class Buyer implements IBuyer {
 
     @Override
     public void removeProductByKg(ProductByKg product, double amount) {
-
+//TODO: all product
+        //TODO: part of product
     }
 
     @Override

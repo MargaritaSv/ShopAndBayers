@@ -22,4 +22,5 @@ public class ProductByKg extends Product {
     public String toString() {
         return super.toString() + " with " + this.quantity + "kg";
     }
+
 }

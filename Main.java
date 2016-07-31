@@ -23,8 +23,11 @@ public class Main {
             billa.addProduct(cheese);
             billa.addProduct(new Product[]{chicken, octopus, dab, chair, crossingStar});
 
-            IBuyer magi = IBuyer.createBayer("Magi",billa,800.0,5);
+            IBuyer magi = IBuyer.createBayer("Magi", billa, 800.0, 5);
+            IBuyer stefan = IBuyer.createBayer("Stephan", billa, 3000.0, 10);
+            IBuyer katq = IBuyer.createBayer("Katq", billa, 2500, 4);
 
+            magi.addProductByKg(chicken,300);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

@@ -22,6 +22,9 @@ public class Shop {
         this.products = new ArrayList<>();
     }
 
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
 
     private void setName(String name) {
         if (name == null || name.trim().length() == 0) {
