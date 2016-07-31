@@ -47,6 +47,7 @@ public class Shop {
         this.money = money;
     }
 
+
     public void setNumberOfProducts(int numberOfProducts) {
         if (numberOfProducts <= 0) {
             throw new IllegalArgumentException("Number of products must be more than zero");
@@ -72,6 +73,4 @@ public class Shop {
     public String toString() {
         return this.name + " " + "on address: " + this.address + " has capital " + this.money + " with number of products " + this.numberOfProducts;
     }
-
-
 }
