@@ -5,8 +5,15 @@ package shopBayers;
  */
 public class Main {
     public static void main(String[] args) {
-        Shop billa = new Shop("Billa", "Sofiq, Lulin", 10000, 10);
-        System.out.println(billa.toString());
+        try {
+            Shop billa = new Shop("Billa", "Sofiq, Lulin", 10000, 10);
+            System.out.println(billa.toString());
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
     }
 
 
