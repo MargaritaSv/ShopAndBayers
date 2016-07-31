@@ -8,8 +8,8 @@ public abstract class Product {
     private double price;
 
     public Product(String name, double price) {
-        this.name = name;
-        this.price = price;
+        this.setName(name);
+        this.setPrice(price);
     }
 
     public String getName() {
@@ -25,13 +25,13 @@ public abstract class Product {
 
     protected void setPrice(double price) {
         if (price <= 0.0) {
-            throw new IllegalArgumentException("The money must be more than zero " + this.name);
+            throw new IllegalArgumentException("The money " + this.name + " must be more than zero.");
         }
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return this.getName() + " - " + this.price+"$";
+        return this.getName() + " - " + this.price + "$";
     }
 }

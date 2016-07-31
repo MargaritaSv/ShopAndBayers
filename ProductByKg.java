@@ -8,7 +8,7 @@ public class ProductByKg extends Product {
 
     public ProductByKg(String name, double price, double quantity) {
         super(name, price);
-        this.quantity = quantity;
+        this.setQuantity(quantity);
     }
 
     protected void setQuantity(double quantity) {
@@ -20,6 +20,6 @@ public class ProductByKg extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + " with " + this.quantity +"kg";
+        return super.toString() + " with " + this.quantity + "kg";
     }
 }

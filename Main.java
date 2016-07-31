@@ -16,7 +16,7 @@ public class Main {
             Fish octopus = new Fish("octopus", 17, 400.0);
 
             Beer dab = new Beer("DAB", 1, 150);
-            Chair chair = new Chair("NormalChair", 8, 45);
+            Chair chair = new Chair("NormalChair", -8, 45);
             Book crossingStar = new Book("CrossingStar", 12, 34);
             System.out.println(dab);
 
