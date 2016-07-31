@@ -44,14 +44,16 @@ class Buyer implements IBuyer, Comparable<Product> {
         this.maxProducts = maxProducts;
     }
 
+
     @Override
     public void addProductByKg(ProductByKg product, double amount) {
         if (!shop.getProducts().contains(product)) {
             throw new IllegalArgumentException("The " + product + "doesn't contain in the shop.");
         }
         //TODO:if product amount is biggest than (ostanalata) in shop
+        //Product pr = product;
         if (!cart.containsKey(product)) {
-            cart.put(product, amount);
+            cart.put(product, 0 + amount);
         } else {
             double oldPrice = cart.get(product);
             //if buyer just added more quantity from this product
@@ -59,6 +61,7 @@ class Buyer implements IBuyer, Comparable<Product> {
         }
 
     }
+
 
     @Override
     public void addProductByCount(ProductByCount product, int amount) {
@@ -78,13 +81,41 @@ class Buyer implements IBuyer, Comparable<Product> {
 
     @Override
     public void removeProductByKg(ProductByKg product, double amount) {
-//TODO: all product
-        //TODO: part of product
+        if (!cart.containsKey(product)) {
+            throw new IllegalArgumentException("The product " + product + " is not in the cart.");
+        }
+
+        double exactQuantity = cart.get(product);
+        if (exactQuantity < amount) {
+            throw new IllegalArgumentException(this.name + " you can't remove more than you are take.");
+        }
+
+        if (exactQuantity == amount) {
+            cart.remove(product);
+        }
+
+        exactQuantity -= amount;
+        cart.put(product, exactQuantity);
 
     }
 
     @Override
     public void removeProductByCount(ProductByCount product, int amount) {
+        if (!cart.containsKey(product)) {
+            throw new IllegalArgumentException("The product " + product + " is not in the cart.");
+        }
+
+        double exactQuantity = cart.get(product);
+        if (exactQuantity < amount) {
+            throw new IllegalArgumentException(this.name + " you can't remove more than you are take.");
+        }
+
+        if (exactQuantity == amount) {
+            cart.remove(product);
+        }
+
+        exactQuantity -= amount;
+        cart.put(product, exactQuantity);
 
     }
 

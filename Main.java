@@ -29,6 +29,10 @@ public class Main {
 
             magi.addProductByKg(chicken, 300);
             magi.addProductByCount(dab, 8);
+            magi.addProductByKg(chicken, 300);
+
+            magi.removeProductByKg(chicken, 500);
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
