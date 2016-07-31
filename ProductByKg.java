@@ -1,19 +1,21 @@
 package shopBayers;
 
+import shopBayers.exceptions.ProductException;
+
 /**
  * Created by Magi on 31.7.2016 г..
  */
 public class ProductByKg extends Product {
     private double quantity;
 
-    public ProductByKg(String name, double price, double quantity) {
+    public ProductByKg(String name, double price, double quantity) throws ProductException {
         super(name, price);
         this.setQuantity(quantity);
     }
 
-    protected void setQuantity(double quantity) {
+    protected void setQuantity(double quantity) throws ProductException {
         if (quantity <= 0.0) {
-            throw new IllegalArgumentException("The quantity for " + super.getName() + " must be more than zero");
+            throw new ProductException("The quantity for " + super.getName() + " must be more than zero");
         }
         this.quantity = quantity;
     }
@@ -25,7 +27,6 @@ public class ProductByKg extends Product {
 
     @Override
     public int compareTo(Object o) {
-//return o -Integer.valueOf((int) this.quantity);
         //TODO: fix all idea
         return 0;
     }

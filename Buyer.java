@@ -1,5 +1,8 @@
 package shopBayers;
 
+import shopBayers.exceptions.BuyerException;
+import shopBayers.exceptions.ProductException;
+
 import java.util.*;
 
 /**
@@ -12,7 +15,7 @@ class Buyer implements IBuyer, Comparable<Product> {
     private int maxProducts;
     private TreeMap<Product, Double> cart;
 
-    Buyer(String name, Shop shop, double money, int maxProducts) {
+    Buyer(String name, Shop shop, double money, int maxProducts) throws Exception {
         this.setName(name);
         this.shop = shop;
         this.setMoney(money);
@@ -20,23 +23,23 @@ class Buyer implements IBuyer, Comparable<Product> {
         this.cart = new TreeMap<>();
     }
 
-    private void setName(String name) {
+    private void setName(String name) throws BuyerException {
         if (name == null || name.trim().length() == 0) {
-            throw new IllegalArgumentException("The " + this.name + " is not correct");
+            throw new BuyerException("The " + this.name + " is not correct");
         }
         this.name = name;
     }
 
-    private void setMoney(double money) {
+    private void setMoney(double money) throws BuyerException {
         if (money <= 0.0) {
-            throw new IllegalArgumentException(this.name + ": The money must be more than zero.");
+            throw new BuyerException(this.name + ": The money must be more than zero.");
         }
         this.money = money;
     }
 
-    private void setMaxProducts(int maxProducts) {
+    private void setMaxProducts(int maxProducts) throws ProductException {
         if (maxProducts <= 0) {
-            throw new IllegalArgumentException("Products must be more than zero.");
+            throw new ProductException("Products must be more than zero.");
         }
         this.maxProducts = maxProducts;
     }
@@ -77,14 +80,14 @@ class Buyer implements IBuyer, Comparable<Product> {
     }
 
     @Override
-    public void removeProductByKg(ProductByKg product, double amount) {
+    public void removeProductByKg(ProductByKg product, double amount) throws ProductException {
         if (!cart.containsKey(product)) {
-            throw new IllegalArgumentException("The product " + product + " is not in the cart.");
+            throw new ProductException("The product " + product + " is not in the cart.");
         }
 
         double exactQuantity = cart.get(product);
         if (exactQuantity < amount) {
-            throw new IllegalArgumentException(this.name + " you can't remove more than you are take.");
+            throw new ProductException(this.name + " you can't remove more than you are take.");
         }
 
         if (exactQuantity == amount) {
@@ -97,14 +100,14 @@ class Buyer implements IBuyer, Comparable<Product> {
     }
 
     @Override
-    public void removeProductByCount(ProductByCount product, int amount) {
+    public void removeProductByCount(ProductByCount product, int amount) throws ProductException {
         if (!cart.containsKey(product)) {
-            throw new IllegalArgumentException("The product " + product + " is not in the cart.");
+            throw new ProductException("The product " + product + " is not in the cart.");
         }
 
         double exactQuantity = cart.get(product);
         if (exactQuantity < amount) {
-            throw new IllegalArgumentException(this.name + " you can't remove more than you are take.");
+            throw new ProductException(this.name + " you can't remove more than you are take.");
         }
 
         if (exactQuantity == amount) {

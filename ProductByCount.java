@@ -1,6 +1,8 @@
 package shopBayers;
 
 
+import shopBayers.exceptions.ProductException;
+
 /**
  * Created by Magi on 31.7.2016 г..
  */
@@ -8,15 +10,15 @@ public class ProductByCount extends Product {
 
     private int quantity;
 
-    public ProductByCount(String name, double price, int quantity) {
+    public ProductByCount(String name, double price, int quantity) throws ProductException {
         super(name, price);
         this.setQuantity(quantity);
     }
 
 
-    protected void setQuantity(int quantity) {
+    protected void setQuantity(int quantity) throws ProductException {
         if (quantity <= 0.0) {
-            throw new IllegalArgumentException("The quantity for " + super.getName() + " must be more than zero.");
+            throw new ProductException("The quantity for " + super.getName() + " must be more than zero.");
         }
         this.quantity = quantity;
     }
@@ -29,6 +31,6 @@ public class ProductByCount extends Product {
 
     @Override
     public int compareTo(Object o) {
-        return 0 -this.quantity;
+        return 0 - this.quantity;
     }
 }

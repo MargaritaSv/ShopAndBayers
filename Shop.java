@@ -1,5 +1,6 @@
 package shopBayers;
 
+import shopBayers.exceptions.ProductException;
 import shopBayers.products.Cheese;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Shop {
     private int numberOfProducts;
     private ArrayList<Product> products;
 
-    public Shop(String name, String address, double money, int numberOfProducts) {
+    public Shop(String name, String address, double money, int numberOfProducts) throws Exception {
         this.setName(name);
         this.setAddress(address);
         this.setMoney(money);
@@ -26,31 +27,31 @@ public class Shop {
         return products;
     }
 
-    private void setName(String name) {
+    private void setName(String name) throws ProductException {
         if (name == null || name.trim().length() == 0) {
-            throw new IllegalArgumentException("The name is not correct");
+            throw new ProductException("The name is not correct");
         }
         this.name = name;
     }
 
-    private void setAddress(String address) {
+    private void setAddress(String address) throws ProductException {
         if (address == null || address.trim().length() == 0) {
-            throw new IllegalArgumentException("The address is not correct");
+            throw new ProductException("The address is not correct");
         }
         this.address = address;
     }
 
-    private void setMoney(double money) {
+    private void setMoney(double money) throws ProductException {
         if (money <= 0.0) {
-            throw new IllegalArgumentException("The money must be more than zero");
+            throw new ProductException("The money must be more than zero");
         }
         this.money = money;
     }
 
 
-    public void setNumberOfProducts(int numberOfProducts) {
+    public void setNumberOfProducts(int numberOfProducts) throws ProductException {
         if (numberOfProducts <= 0) {
-            throw new IllegalArgumentException("Number of products must be more than zero");
+            throw new ProductException("Number of products must be more than zero");
         }
         this.numberOfProducts = numberOfProducts;
     }
