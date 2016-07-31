@@ -13,4 +13,8 @@ public interface IBuyer {
     void removeProductByCount(ProductByCount product, int amount);
 
     void payProducts();
+
+    public static IBuyer createBayer(String name,Shop shop,double money,int neededProducts){
+        return new Buyer(name,shop,money,neededProducts);
+    }
 }
