@@ -1,5 +1,7 @@
 package shopBayers;
 
+import shopBayers.products.Cheese;
+
 import java.util.ArrayList;
 
 /**
@@ -17,6 +19,7 @@ public class Shop {
         this.setAddress(address);
         this.setMoney(money);
         this.setNumberOfProducts(numberOfProducts);
+        this.products = new ArrayList<>();
     }
 
 
@@ -48,8 +51,20 @@ public class Shop {
         this.numberOfProducts = numberOfProducts;
     }
 
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void addProduct(Product[] product) {
+        for (int i = 0; i < product.length; i++) {
+            products.add(product[i]);
+        }
+    }
+
     @Override
     public String toString() {
         return this.name + " " + "on address: " + this.address + " has capital " + this.money + " with number of products " + this.numberOfProducts;
     }
+
+
 }
