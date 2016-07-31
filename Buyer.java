@@ -1,9 +1,6 @@
 package shopBayers;
 
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Magi on 31.7.2016 г..
@@ -121,6 +118,18 @@ class Buyer implements IBuyer, Comparable<Product> {
 
     @Override
     public void payProducts() {
+        double totalMoney = 0;
+        for (Map.Entry<Product, Double> pair : cart.entrySet()) {
+            totalMoney += pair.getValue() * pair.getKey().getPrice();
+        }
+
+        shop.addMoneyInShop(totalMoney);
+
+        if (totalMoney > this.money) {
+            throw new IllegalArgumentException("Must return some products. Exceeding the limit with " + Math.abs(totalMoney - this.money));
+        }
+
+        this.money -= totalMoney;
 
     }
 

@@ -64,6 +64,10 @@ public class Shop {
         }
     }
 
+    public void addMoneyInShop(double moneyFromBuyer) {
+        this.money += moneyFromBuyer;
+    }
+
     @Override
     public String toString() {
         return this.name + " " + "on address: " + this.address + " has capital " + this.money + " with number of products " + this.numberOfProducts;

@@ -3,7 +3,7 @@ package shopBayers;
 /**
  * Created by Magi on 31.7.2016 г..
  */
-public abstract class Product  implements Comparable{
+public abstract class Product implements Comparable {
     private String name;
     private double price;
 
@@ -16,11 +16,16 @@ public abstract class Product  implements Comparable{
         return name;
     }
 
+
     protected void setName(String name) {
         if (name == null || name.trim().length() == 0) {
             throw new IllegalArgumentException("The " + this.name + " is not correct");
         }
         this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     protected void setPrice(double price) {
