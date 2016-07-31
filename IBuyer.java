@@ -11,4 +11,6 @@ public interface IBuyer {
     void removeProductByKg(ProductByKg product, double amount);
 
     void removeProductByCount(ProductByCount product, int amount);
+
+    void payProducts();
 }
